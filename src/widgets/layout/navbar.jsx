@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
@@ -12,6 +13,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function Navbar({ brandName, routes, action }) {
   const [openNav, setOpenNav] = React.useState(false);
+  const { i18n } = useTranslation();
+  console.log('i18', i18n)
 
   React.useEffect(() => {
     window.addEventListener(
@@ -60,6 +63,11 @@ export function Navbar({ brandName, routes, action }) {
     </ul>
   );
 
+  function handleLanguageChange(event, lang) {
+    event.preventDefault();
+    i18n.changeLanguage(lang);
+  }
+
   return (
     <MTNavbar color="transparent" className="p-3">
       <div className="container mx-auto flex items-center justify-between text-white">
@@ -70,14 +78,15 @@ export function Navbar({ brandName, routes, action }) {
         </Link>
         <div className="hidden lg:block">{navList}</div>
         <div className="hidden gap-2 lg:flex">
-          <a
-            href="https://www.material-tailwind.com/blocks?ref=mtkr"
-            target="_blank"
-          >
-            <Button variant="text" size="sm" color="white" fullWidth>
-              pro version
-            </Button>
-          </a>
+          {
+            (i18n.language == 'en') ? (<Button onClick={(event) => handleLanguageChange(event, 'es')}>
+              Cambiar a español
+            </Button>) : (<Button onClick={(event) => handleLanguageChange(event, 'en')}>
+              Switch to English
+            </Button>)
+          }
+
+
           {React.cloneElement(action, {
             className: "hidden lg:inline-block",
           })}
@@ -102,15 +111,7 @@ export function Navbar({ brandName, routes, action }) {
       >
         <div className="container mx-auto">
           {navList}
-          <a
-            href="https://www.material-tailwind.com/blocks/react?ref=mtkr"
-            target="_blank"
-            className="mb-2 block"
-          >
-            <Button variant="text" size="sm" fullWidth>
-              pro version
-            </Button>
-          </a>
+          <>hola</>
           {React.cloneElement(action, {
             className: "w-full block",
           })}
@@ -121,16 +122,9 @@ export function Navbar({ brandName, routes, action }) {
 }
 
 Navbar.defaultProps = {
-  brandName: "Globo MAYA",
+  brandName: "Tiki Hut Rental Yucatan",
   action: (
-    <a
-      href="https://www.creative-tim.com/product/material-tailwind-kit-react"
-      target="_blank"
-    >
-      <Button variant="gradient" size="sm" fullWidth>
-        free download
-      </Button>
-    </a>
+    <></>
   ),
 };
 
