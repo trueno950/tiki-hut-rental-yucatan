@@ -1,148 +1,46 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Typography,
-  Button,
-  IconButton,
-  Input,
-  Textarea,
-} from "@material-tailwind/react";
-import { UsersIcon } from "@heroicons/react/24/solid";
-import { PageTitle, Footer } from "@/widgets/layout";
-import { FeatureCard, TeamCard } from "@/widgets/cards";
-import { featuresData, teamData, contactData } from "@/data";
+import { Button, Typography } from "@material-tailwind/react";
 import { useTranslation, Trans } from "react-i18next";
-import { Route, Routes } from "react-router-dom";
 
 export function Home() {
   const { t } = useTranslation()
+
   return (
-    <>
-      <section id="home" className="relative flex h-screen content-center items-center justify-center pt-16 pb-32">
-        <div id="home" className="absolute top-0 h-full w-full bg-[url('../public/img/portada-home.jpg')] bg-cover bg-center" />
-        <div className="absolute top-0 h-full w-full bg-black/75 bg-cover bg-center" />
-        <div className="max-w-8xl container relative mx-auto">
-          <div className="flex flex-wrap items-center">
-            <div className="ml-auto mr-auto w-full px-4 text-center lg:w-8/12">
-              <Typography
-                variant="h1"
-                color="white"
-                className="mb-6 font-black"
-              >
-                {t('hola')}
-                {t('home.title')}
-              </Typography>
-              <Typography variant="lead" color="white" className="opacity-80">
-                This is a simple example of a Landing Page you can build using
-                Material Tailwind. It features multiple elements based on the
-                Tailwind CSS and Material Design by Google.
-              </Typography>
+    <section id="home" className="grid relative flex h-screen content-center items-center justify-center">
+      <div className="absolute top-0 h-full w-full bg-[url('../public/img/portada-home10.jpg')] bg-cover bg-center grid-cols-12">
+        <div className="sm:px-4 sm:py-20 text-center">
+          <Typography
+            variant="h1"
+            className="mb-6 font-black text-green-800"
+          >
+            {t('home.title')}
+          </Typography>
+          <div className="flex justify-around mt-0">
+            <div className="flex flex-col items-center">
+              <img src="../public/img/portada-home0.jpg" alt="Imagen del hotel" className="w-64 h-64 object-cover rounded-lg shadow-lg" />
+              <h2 className="mt-4 mb-2 text-xl font-bold text-gray-900">Habitaciones cómodas y elegantes</h2>
+              <p className="text-center text-gray-900">Disfruta de una estancia confortable en nuestras habitaciones equipadas con todas las comodidades que necesitas para relajarte y descansar.</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img src="../public/img/portada-home5.jpg" alt="Imagen de la playa" className="w-64 h-64 object-cover rounded-lg shadow-lg" />
+              <h2 className="mt-4 mb-2 text-xl font-bold text-gray-900">Ubicación privilegiada</h2>
+              <p className="text-center text-gray-900">A pocos pasos de la playa, nuestro hotel se encuentra en una ubicación ideal para disfrutar de las vistas impresionantes y la belleza natural de la costa de Yucatán.</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img src="../public/img/portada-home2.jpg" alt="Imagen de la piscina" className="w-64 h-64 object-cover rounded-lg shadow-lg" />
+              <h2 className="mt-4 mb-2 text-xl font-bold text-gray-900">Actividades recreativas cercanas</h2>
+              <p className="text-center text-gray-900">En los alrededores del hotel encontrarás una gran variedad de actividades para todos los gustos, como senderismo, buceo, paseos en bote, y mucho más.</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="gallery" className="-mt-32 bg-blue-50 px-4 pb-20 pt-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuresData.map(({ color, title, icon, description }) => (
-              <FeatureCard
-                key={title}
-                color={color}
-                title={title}
-                icon={React.createElement(icon, {
-                  className: "w-5 h-5 text-white",
-                })}
-                description={description}
-              />
-            ))}
-          </div>
-          <div className="mt-32 flex flex-wrap items-center">
-            <div className="mx-auto -mt-8 w-full px-4 md:w-5/12">
-              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white p-3 text-center shadow-lg">
-                <UsersIcon className="h-6 w-6 text-blue-gray-900" />
-              </div>
-              <Typography
-                variant="h3"
-                className="mb-3 font-bold"
-                color="blue-gray"
-              >
-                Working with us is a pleasure
-              </Typography>
-              <Typography className="mb-8 font-normal text-blue-gray-500">
-                Don't let your uses guess by attaching tooltips and popoves to
-                any element. Just make sure you enable them first via
-                JavaScript.
-                <br />
-                <br />
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you're good to
-                go. Just make sure you enable them first via JavaScript.
-              </Typography>
-              <Button variant="outlined">read more</Button>
-            </div>
-            <div className="mx-auto mt-24 flex w-full justify-center px-4 md:w-4/12 lg:mt-0">
-              <Card className="shadow-lg shadow-gray-500/10">
-                <CardHeader className="relative h-56">
-                  <img
-                    alt="Card Image"
-                    src="/img/teamwork.jpeg"
-                    className="h-full w-full"
-                  />
-                </CardHeader>
-                <CardBody>
-                  <Typography
-                    variant="h5"
-                    color="blue-gray"
-                    className="mb-3 font-bold"
-                  >
-                    Top Notch Services
-                  </Typography>
-                  <Typography className="font-normal text-blue-gray-500">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
-                  </Typography>
-                </CardBody>
-              </Card>
-            </div>
+          <div className="flex justify-center mt-5">
+            <Button className="px-8 py-4 text-xl font-bold text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50" >
+              <a href="/#contact">              Reserva ahora
+              </a>
+            </Button>
           </div>
         </div>
-      </section>
-
-      <section id="services" className="px-4 pt-20 pb-48">
-        <div className="container mx-auto">
-          <PageTitle heading="Here are our heroes">
-            According to the National Oceanic and Atmospheric Administration,
-            Ted, Scambos, NSIDClead scentist, puts the potentially record
-            maximum.
-          </PageTitle>
-          <div className="mt-24 grid grid-cols-1 gap-12 gap-x-24 md:grid-cols-2 xl:grid-cols-4">
-            {teamData.map(({ img, name, position, socials }) => (
-              <TeamCard
-                key={name}
-                img={img}
-                name={name}
-                position={position}
-                socials={
-                  <div className="flex items-center gap-2">
-                    {socials.map(({ color, name }) => (
-                      <IconButton key={name} color={color} variant="text">
-                        <i className={`fa-brands text-lg fa-${name}`} />
-                      </IconButton>
-                    ))}
-                  </div>
-                }
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-    </>
-
+      </div>
+    </section>
   );
 }
 

@@ -1,4 +1,3 @@
-import { Home, Profile, SignIn, SignUp } from "@/pages";
 import {
   HomeIcon,
   UserCircleIcon,

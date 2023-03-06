@@ -1,7 +1,5 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import {
   Navbar as MTNavbar,
   MobileNav,
@@ -10,11 +8,10 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { LanguageSelector } from "@/pages/languageSelector";
 
 export function Navbar({ brandName, routes, action }) {
   const [openNav, setOpenNav] = React.useState(false);
-  const { i18n } = useTranslation();
-  console.log('i18', i18n)
 
   React.useEffect(() => {
     window.addEventListener(
@@ -37,7 +34,7 @@ export function Navbar({ brandName, routes, action }) {
             <a
               href={href}
               target={target}
-              className="flex items-center gap-1 p-1 font-normal"
+              className="flex items-center gap-1 p-1 font-bold text-gray-900"
             >
               {icon &&
                 React.createElement(icon, {
@@ -46,47 +43,34 @@ export function Navbar({ brandName, routes, action }) {
               {name}
             </a>
           ) : (
-            <Link
-              to={path}
+            <a
+              href={path}
               target={target}
-              className="flex items-center gap-1 p-1 font-normal"
+              className="flex items-center gap-1 p-1 font-bold text-gray-100"
             >
               {icon &&
                 React.createElement(icon, {
                   className: "w-[18px] h-[18px] opacity-75 mr-1",
                 })}
               {name}
-            </Link>
+            </a>
           )}
         </Typography>
       ))}
     </ul>
   );
 
-  function handleLanguageChange(event, lang) {
-    event.preventDefault();
-    i18n.changeLanguage(lang);
-  }
-
   return (
     <MTNavbar color="transparent" className="p-3">
-      <div className="container mx-auto flex items-center justify-between text-white">
-        <Link to="/">
+      <div className="container mx-auto flex items-center justify-between text-gray-100">
+        <a href="/">
           <Typography className="mr-4 ml-2 cursor-pointer py-1.5 font-bold">
             {brandName}
           </Typography>
-        </Link>
+        </a>
         <div className="hidden lg:block">{navList}</div>
         <div className="hidden gap-2 lg:flex">
-          {
-            (i18n.language == 'en') ? (<Button onClick={(event) => handleLanguageChange(event, 'es')}>
-              Cambiar a español
-            </Button>) : (<Button onClick={(event) => handleLanguageChange(event, 'en')}>
-              Switch to English
-            </Button>)
-          }
-
-
+          <LanguageSelector/>
           {React.cloneElement(action, {
             className: "hidden lg:inline-block",
           })}
@@ -106,7 +90,7 @@ export function Navbar({ brandName, routes, action }) {
         </IconButton>
       </div>
       <MobileNav
-        className="rounded-xl bg-white px-4 pt-2 pb-4 text-blue-gray-900"
+        className="rounded-xl bg-white px-4 pt-2 pb-4 text-blue-900"
         open={openNav}
       >
         <div className="container mx-auto">

@@ -21,7 +21,7 @@ i18next
                 translation: {
                     hola:'efvev',
                     home: {
-                        title: 'Hola mundo'
+                        title: 'Descubre el paraíso oculto de Yucatán en Tiki Hut Rental'
                     }
                 }
             }
