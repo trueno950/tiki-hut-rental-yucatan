@@ -17,9 +17,6 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
 import "../public/css/tailwind.css";
 import './i18n'
-import dotenv from 'dotenv';
-console.log('dotenv', dotenv)
-dotenv.config();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>

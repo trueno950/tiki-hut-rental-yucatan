@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -7,7 +8,7 @@ import { Button } from "@material-tailwind/react";
 export const Contact = () => {
     const [center, setCenter] = useState({ lat: 20.986408, lng: -89.616615 });
     const [zoom, setZoom] = useState(15);
-
+    const apiKey = process.env.API_KEY;
     const AnyReactComponent = () => (
         <div className="text-red-600">
             <FaMapMarkerAlt className="text-3xl" />
@@ -67,7 +68,7 @@ export const Contact = () => {
                     <div style={{ height: "400px", width: "100%" }}>
                         <GoogleMapReact
                             bootstrapURLKeys={{
-                                key: process.env.REACT_APP_API_KEY_GOOGLE,
+                                key: apiKey,
                             }}
                             defaultCenter={center}
                             defaultZoom={zoom}
