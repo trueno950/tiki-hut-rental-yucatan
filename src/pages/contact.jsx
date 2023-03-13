@@ -67,7 +67,7 @@ export const Contact = () => {
                     <div style={{ height: "400px", width: "100%" }}>
                         <GoogleMapReact
                             bootstrapURLKeys={{
-                                key: process.env.API_KEY_GOOGLE,
+                                key: process.env.REACT_APP_API_KEY_GOOGLE,
                             }}
                             defaultCenter={center}
                             defaultZoom={zoom}
